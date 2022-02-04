@@ -8,4 +8,5 @@ def create_tables():
     db.create_all()
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run()
+    #app.run(host="0.0.0.0")    #for testing with `python run.py`
