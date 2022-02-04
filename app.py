@@ -10,6 +10,11 @@ from resources.store import Store, StoreList
 from blocklist import BLOCKLIST
 
 app = Flask(__name__)
+
+@app.route("/")
+def api_check():
+    return "<p>Hello Minna!</p>"
+
 db_url= os.environ.get("DATABASE_URL", "sqlite:///data.db")
 if db_url != "sqlite:///data.db":
   if db_url[:10] != "postgresql": #in case it is passed a 'postgres:<conn>' string
