@@ -22,12 +22,6 @@ app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 app.secret_key = 'secretoprimordial'
 api = Api(app)
 
-
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 jwt = JWTManager(app)
 
 @jwt.additional_claims_loader
@@ -84,8 +78,3 @@ api.add_resource(User, "/user/<int:user_id>")
 api.add_resource(UserLogin, "/login")
 api.add_resource(UserLogout, "/logout")
 api.add_resource(TokenRefresh, '/refresh')
-
-if __name__ == '__main__':
-    from db import db
-    db.init_app(app)
-    app.run(port=5000, debug=True)
